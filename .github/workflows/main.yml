@@ -33,7 +33,7 @@ jobs:
       run: |
         dotnet publish --configuration Release -o gloomhelper
     - name: Push to Digital Ocean
-      uses: rihacek/scp-action@master
+      uses: rihacek/scp-action@main
       with:
         host: ${{ secrets.REMOTE_HOST }}
         username: ${{ secrets.REMOTE_USER }}
