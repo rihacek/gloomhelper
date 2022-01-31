@@ -39,6 +39,6 @@ jobs:
         username: ${{ secrets.REMOTE_USER }}
         port: ${{ secrets.REMOTE_PORT }}
         password: ${{ secrets.PASSWORD }}
-        source: "gloomhelper"
+        source: "./gloomhelper"
         rm: true
         target: "/var/www/gloomhelper"
