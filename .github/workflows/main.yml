@@ -31,7 +31,7 @@ jobs:
       run: dotnet build gloomhelper/gloomhelper.sln --configuration Release
     - name: dotnet publish 
       run: |
-        dotnet publish --configuration Release -o gloomhelper
+        dotnet publish gloomhelper/gloomhelper.sln --configuration Release -o gloomhelper
     - name: Push to Digital Ocean
       uses: appleboy/scp-action@master
       with:
