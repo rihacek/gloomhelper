@@ -41,4 +41,4 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         source: "gloomhelper"
         rm: true
-        target: "/var/www/gloomhelper"
+        target: "/var/www/rihaceks.com/gloomhelper"
