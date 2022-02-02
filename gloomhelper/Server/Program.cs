@@ -4,13 +4,14 @@ using Microsoft.AspNetCore.ResponseCompression;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders =
         ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
 
 
 var app = builder.Build();
@@ -23,7 +24,6 @@ if (app.Environment.IsDevelopment())
    }
 else
 {
-    app.UseHttpsRedirection();
     app.UseExceptionHandler("/Error");
 }
 
