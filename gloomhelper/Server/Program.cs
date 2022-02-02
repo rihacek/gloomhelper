@@ -4,30 +4,27 @@ using Microsoft.AspNetCore.ResponseCompression;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders =
         ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
 });
+builder.Services.AddControllersWithViews();
+builder.Services.AddRazorPages();
+
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseForwardedHeaders();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
-    app.UseForwardedHeaders();
-
-}
+   }
 else
 {
     app.UseHttpsRedirection();
     app.UseExceptionHandler("/Error");
-    app.UseForwardedHeaders();
-
 }
 
 app.UseBlazorFrameworkFiles();
