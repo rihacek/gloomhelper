@@ -17,16 +17,17 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.UseForwardedHeaders();
-app.UsePathBase("/gloomhelper");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
    }
 else
 {
+    app.UsePathBase("/gloomhelper");
     app.UseExceptionHandler("/Error");
 }
+app.UseForwardedHeaders();
 
 app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
